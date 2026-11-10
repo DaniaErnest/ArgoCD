@@ -200,7 +200,7 @@ What the important lines mean:
 Apply it with:
 
 ```bash
-kubectl apply -f guestbook-app.yaml
+kubectl apply -f applications/guestbook-app.yaml
 kubectl get pods -n guestbook
 ```
 
@@ -211,14 +211,14 @@ Destination namespace: `my-web`
 
 This is the same idea as guestbook, but in a repo I own, so I can change Git myself. That is the normal job flow.
 
-The Application file is `my-web-app.yaml` at the root of this repo. It is deliberately *not* inside `manifests/`, so ArgoCD does not try to manage itself.
+The Application file is `applications/my-web-app.yaml`. It lives in an `applications/` folder, not at the repo root and not inside `manifests/`, so ArgoCD does not try to manage itself.
 
 It points to this repo, `HEAD`, path `manifests`, destination namespace `my-web`, with automated sync, prune, and selfHeal, and `CreateNamespace=true`.
 
 Apply it with:
 
 ```bash
-kubectl apply -f my-web-app.yaml
+kubectl apply -f applications/my-web-app.yaml
 kubectl get pods -n my-web
 ```
 
@@ -339,8 +339,8 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # Applications
 kubectl get applications -n argocd
-kubectl apply -f guestbook-app.yaml
-kubectl apply -f my-web-app.yaml
+kubectl apply -f applications/guestbook-app.yaml
+kubectl apply -f applications/my-web-app.yaml
 
 # Check apps
 kubectl get pods -n guestbook
@@ -362,7 +362,9 @@ git push
 ```text
 .
 ├── README.md                  # This file: what ArgoCD is, commands, applications
-├── my-web-app.yaml            # ArgoCD Application for my-web, at the root, not in manifests/
+├── applications/
+│   ├── my-web-app.yaml        # ArgoCD Application for my-web
+│   └── guestbook-app.yaml     # ArgoCD Application for guestbook
 ├── manifests/
 │   ├── README.md              # How the manifests were built
 │   ├── deployment.yaml        # Deployment my-web, nginx:1.27, 1 replica to start
