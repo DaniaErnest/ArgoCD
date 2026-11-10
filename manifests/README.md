@@ -23,7 +23,7 @@ manifests/
 
 Only these two YAML files are deployed. Nothing else in this folder is applied by ArgoCD.
 
-The Application file itself, `my-web-app.yaml`, is deliberately *not* in this folder. It lives at the root of the repo. If it were in `manifests/`, ArgoCD would try to manage itself, and that gets confusing for a first lab.
+The Application file itself, `applications/my-web-app.yaml`, is deliberately *not* in this folder. It lives in an `applications/` folder at the repo root. If it were in `manifests/`, ArgoCD would try to manage itself, and that gets confusing for a first lab.
 
 ## deployment.yaml — line by line
 
