@@ -394,16 +394,3 @@ If it prints nothing, the file is not ignored — do not push.
   Do not paste plan output in chat or commit it. The password and
   `server.secretkey` should never appear in plan output in this setup,
   because they are not Terraform variables — they are in the manual Secret.
-
-## What this lab proves (honest CV line)
-
-For Projects / Hands-on Labs, not under WithinLabs, not production:
-
-> Installed ArgoCD v3.6.1 on kind with Terraform, using a reusable
-> Helm-chart module (chart 10.17.1, pinned, with a custom values file):
-> deployed an nginx app from my own Git repo with automated sync, prune
-> and self-heal, verified Git-to-cluster delivery by changing replicas
-> from 1 to 2 in Git and watching ArgoCD create the second pod, and
-> verified drift correction by scaling manually and watching ArgoCD
-> revert it. The Helm install also fixed a missing ApplicationSet CRD
-> from the earlier kubectl install.
