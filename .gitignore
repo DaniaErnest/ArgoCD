@@ -1,0 +1,10 @@
+argocd-secret.yaml
+secrets/
+*.tfvars
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+*.tfplan
+.DS_Store

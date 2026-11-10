@@ -1,0 +1,19 @@
+# ArgoCD Helm chart values for this lab.
+# We keep the chart defaults on purpose.
+# In particular, applicationSet stays enabled (its default),
+# so its CRD is installed and its controller has something to watch.
+# That was the missing CRD in the kubectl install.
+
+# The server stays internal only, like before.
+# kind has no LoadBalancer, so we log in with port-forward.
+
+configs:
+  secret:
+    # false = use the manually created argocd-secret.
+    # true  = let the chart create argocd-secret with a random password.
+    createSecret: ${create_secret}
+     
+server:
+  service:
+    type: ${server_service_type}
+
